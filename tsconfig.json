@@ -1,0 +1,26 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "paths": {
+      "@esbuild-ts-monorepo/generic-lib": ["./packages/generic-lib/"],
+      "@esbuild-ts-monorepo/node-lib": ["./packages/node-lib/"],
+      "@esbuild-ts-monorepo/react-lib": ["./packages/react-lib/"]
+    },
+    "outDir": "dist",
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "NodeNext",
+    "lib": ["es2020", "dom", "dom.iterable"],
+    "typeRoots": ["node_modules/@types"],
+    "esModuleInterop": true,
+    "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
+    "declaration": true,
+    "sourceMap": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowJs": true,
+    "jsx": "react-jsx"
+  }
+}

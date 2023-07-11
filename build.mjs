@@ -1,16 +1,21 @@
 import * as esbuild from "esbuild";
-import postCssPlugin from "esbuild-plugin-postcss2";
-import autoprefixer from "autoprefixer";
+import stylePlugin from "esbuild-style-plugin";
 
-await esbuild.build({
+/*
+const bundle = await esbuild.build({
+  entryPoints: ["src/index.css"],
+  bundle: true,
+  outfile: "public/index.css",
+  plugins: [
+   stylePlugin()
+  ],
+});
+*/
+esbuild.build({
   entryPoints: ["src/index.tsx"],
   bundle: true,
   sourcemap: true,
   target: ["es2020"],
   outfile: "public/index.js",
-  plugins: [
-    postCssPlugin.default({
-      plugins: [autoprefixer],
-    }),
-  ],
+  plugins: [stylePlugin({ postcssConfigFile: true })],
 });
